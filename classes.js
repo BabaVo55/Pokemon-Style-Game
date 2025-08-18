@@ -27,19 +27,20 @@ class Sprite {
             this.image.height, 
         )
         
-        if (this.moving){
-            if (this.frames.max > 1){
-                this.frames.elapsed ++
-            }
-            if (this.frames.elapsed % 10 === 0){
-                
-                if (this.frames.val < this.frames.max - 1){
-                    this.frames.val++
-                } else {
-                    this.frames.val = 0
-                }
+        if (!this.moving) return;
+
+        if (this.frames.max > 1){
+            this.frames.elapsed ++
+        }
+        if (this.frames.elapsed % 10 === 0){
+            
+            if (this.frames.val < this.frames.max - 1){
+                this.frames.val++
+            } else {
+                this.frames.val = 0
             }
         }
+        
     
 
     }   
