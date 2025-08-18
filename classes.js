@@ -25,6 +25,11 @@ class Sprite {
             this.image.width / this.frames.max,
             this.image.height, 
         )
+
+
+    }   
+
+    update(){
         if (this.frames.max > 1){
             this.frames.elapsed ++
         }
@@ -36,11 +41,6 @@ class Sprite {
                 this.frames.val = 0
             }
         }
-
-    }   
-
-    update(){
-
     }
 }
 
