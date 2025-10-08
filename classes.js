@@ -45,10 +45,12 @@ class Sprite {
     attack({attack, recipient}){
         const tl = gsap.timeline();
         tl.to(this.position, {
-            x: this.position.x - 20
+            x: this.position.x - 20,
+            y: this.position.y + 10
         }).to(this.position, {
             x: this.position.x + 40,
-            y: this.position.y - 20
+            y: this.position.y - 20,
+            duration: 0.1
         }).to(this.position, {
             x: this.position.x,
             y: this.position.y
