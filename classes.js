@@ -11,7 +11,6 @@ class Sprite {
         this.sprites = sprites;
         this.animate = animate;
         
-        
     }
   
     draw(){
@@ -42,10 +41,19 @@ class Sprite {
                 this.frames.val = 0
             }
         }
-        
-    
-
     }   
+    attack({attack, recipient}){
+        const tl = gsap.timeline();
+        tl.to(this.position, {
+            x: this.position.x - 20
+        }).to(this.position, {
+            x: this.position.x + 40,
+            y: this.position.y - 20
+        }).to(this.position, {
+            x: this.position.x,
+            y: this.position.y
+        })
+    }
 
     // update(){
     //     if (this.frames.max > 1){
