@@ -67,7 +67,7 @@ class Sprite {
             x: this.position.x + movementDistanceX * 2,
             y: this.position.y - movementDistanceY * 2,
             duration: 0.1,
-            onComplete: () => {
+            onComplete: () => { // through this Hoisting is made possible as we need to reference this.health;
                 // Attack Completed;
                 gsap.to('#enemyHealthBar', {
                     width: this.health - attack.damage + '%' 
