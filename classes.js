@@ -50,7 +50,12 @@ class Sprite {
         }).to(this.position, {
             x: this.position.x + 40,
             y: this.position.y - 20,
-            duration: 0.1
+            duration: 0.1,
+            onComplete() {
+                gsap.to(recipient.position, {
+                    x: recipient.position.x + 10
+                })
+            }
         }).to(this.position, {
             x: this.position.x,
             y: this.position.y
