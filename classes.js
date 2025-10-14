@@ -67,7 +67,9 @@ class Sprite {
 
                 gsap.to(recipient, {
                     opacity:  0,
-                    
+                    repeat: 5,
+                    yoyo: true,
+                    duration: 0.08,
 
                 })
             }
