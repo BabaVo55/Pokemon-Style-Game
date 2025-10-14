@@ -65,8 +65,8 @@ class Sprite {
                     duration: 0.08,
                 })
 
-                gsap.to(recipient.opacity, {
-                    opacity: 0,
+                gsap.to(recipient, {
+                    opacity:  0,
                     
 
                 })
