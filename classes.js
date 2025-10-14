@@ -1,5 +1,5 @@
 class Sprite {
-    constructor({position, image, frames = {max: 1, hold: 10}, sprites = [], animate = false}){
+    constructor({position, image, frames = {max: 1, hold: 10}, sprites = [], animate = false, isEnemy = false}){
         this.position = position
         this.image = image;
         this.frames = {...frames, val: 0, elapsed: 0};
@@ -11,7 +11,8 @@ class Sprite {
         this.sprites = sprites;
         this.animate = animate;
         this.opacity = 1; // save / intialize the state desired
-        this.health = 100
+        this.health = 100;
+        this.isEnemy = isEnemy;
         
     }
   
@@ -50,13 +51,21 @@ class Sprite {
     }   
 
     attack({attack, recipient}){
+
+        let movementDistanceX = 20;
+        let movementDistanceY = 10;
+        if (this.isEnemy) {
+            movementDistanceX = -movementDistanceX
+            movementDistanceY = -movementDistanceY
+        }
+
         const tl = gsap.timeline();
         tl.to(this.position, {
-            x: this.position.x - 20,
-            y: this.position.y + 10
+            x: this.position.x - movementDistanceX,
+            y: this.position.y + movementDistanceY
         }).to(this.position, {
-            x: this.position.x + 40,
-            y: this.position.y - 20,
+            x: this.position.x + movementDistanceX * 2,
+            y: this.position.y - movementDistanceY * 2,
             duration: 0.1,
             onComplete: () => {
                 // Attack Completed;
