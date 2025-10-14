@@ -10,10 +10,13 @@ class Sprite {
         }
         this.sprites = sprites;
         this.animate = animate;
+        this.opacity = 1; // save / intialize the state desired
         
     }
   
     draw(){
+        c.save()
+        c.globalAlpha = this.opacity;
         c.drawImage(
             this.image,
             // Cropping
@@ -27,6 +30,8 @@ class Sprite {
             this.image.width / this.frames.max,
             this.image.height, 
         )
+        c.restore();
+        // alter state and render state to create change movement and effect; 
         
         if (!this.animate) return;
 
@@ -42,6 +47,7 @@ class Sprite {
             }
         }
     }   
+
     attack({attack, recipient}){
         const tl = gsap.timeline();
         tl.to(this.position, {
@@ -53,7 +59,16 @@ class Sprite {
             duration: 0.1,
             onComplete() {
                 gsap.to(recipient.position, {
-                    x: recipient.position.x + 10
+                    x: recipient.position.x + 10,
+                    yoyo: true,
+                    repeat: 5,
+                    duration: 0.08,
+                })
+
+                gsap.to(recipient.opacity, {
+                    opacity: 0,
+                    
+
                 })
             }
         }).to(this.position, {
@@ -61,6 +76,8 @@ class Sprite {
             y: this.position.y
         })
     }
+
+    
 
     // update(){
     //     if (this.frames.max > 1){
