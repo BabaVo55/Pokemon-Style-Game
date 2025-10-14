@@ -11,6 +11,7 @@ class Sprite {
         this.sprites = sprites;
         this.animate = animate;
         this.opacity = 1; // save / intialize the state desired
+        this.health = 100
         
     }
   
@@ -57,7 +58,12 @@ class Sprite {
             x: this.position.x + 40,
             y: this.position.y - 20,
             duration: 0.1,
-            onComplete() {
+            onComplete: () => {
+                // Attack Completed;
+                gsap.to('#enemyHealthBar', {
+                    width: this.health - attack.damage + '%' 
+                });
+
                 gsap.to(recipient.position, {
                     x: recipient.position.x + 10,
                     yoyo: true,
