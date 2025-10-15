@@ -49,16 +49,19 @@ class Sprite {
             }
         }
     }   
+    /// ************************ FOCUS RIGHT HERE> ENGINEERING IS HERE * (BELOW) *****************************************************
 
     attack({attack, recipient}){
 
         let movementDistanceX = 20;
         let movementDistanceY = 10;
+        // STEP 1: add health bar variable and default it to enemy ID;
         let healthBar = '#enemyHealthBar'
 
         if (this.isEnemy) {
             movementDistanceX = -movementDistanceX;
             movementDistanceY = -movementDistanceY;
+            // Step 2 change ID to player id if this.isEnemy is true; (Class property);
             healthBar = '#playerHealthBar'
         }
 
@@ -72,6 +75,8 @@ class Sprite {
             duration: 0.1,
             onComplete: () => { // through this Hoisting is made possible as we need to reference this.health;
                 // Attack Completed;
+
+                // Step 3: add health bar variable rather than the enemy ID as it was done before:
                 gsap.to(healthBar, {
                     width: this.health - attack.damage + '%' 
                 });
