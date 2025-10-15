@@ -75,10 +75,10 @@ class Sprite {
             duration: 0.1,
             onComplete: () => { // through this Hoisting is made possible as we need to reference this.health;
                 // Attack Completed;
-
+                
                 // Step 3: add health bar variable rather than the enemy ID as it was done before:
                 gsap.to(healthBar, {
-                    width: this.health - attack.damage + '%' 
+                    width: (this.health -= attack.damage) + '%' 
                 });
 
                 gsap.to(recipient.position, {
