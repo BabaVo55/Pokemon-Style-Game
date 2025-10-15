@@ -11,7 +11,7 @@ class Sprite {
         this.sprites = sprites;
         this.animate = animate;
         this.opacity = 1; // save / intialize the state desired
-        this.health = 100;
+        this.health = 100
         this.isEnemy = isEnemy;
         
     }
@@ -54,9 +54,12 @@ class Sprite {
 
         let movementDistanceX = 20;
         let movementDistanceY = 10;
+        let healthBar = '#enemyHealthBar'
+
         if (this.isEnemy) {
-            movementDistanceX = -movementDistanceX
-            movementDistanceY = -movementDistanceY
+            movementDistanceX = -movementDistanceX;
+            movementDistanceY = -movementDistanceY;
+            healthBar = '#playerHealthBar'
         }
 
         const tl = gsap.timeline();
@@ -69,7 +72,7 @@ class Sprite {
             duration: 0.1,
             onComplete: () => { // through this Hoisting is made possible as we need to reference this.health;
                 // Attack Completed;
-                gsap.to('#enemyHealthBar', {
+                gsap.to(healthBar, {
                     width: this.health - attack.damage + '%' 
                 });
 
