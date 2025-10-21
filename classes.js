@@ -52,12 +52,16 @@ class Sprite {
     /// ************************ FOCUS RIGHT HERE> ENGINEERING IS HERE * (BELOW) *****************************************************
 
     attack({attack, recipient, renderedSprites}){
+        let movementDistanceX = 20;
+        let movementDistanceY = 10;
+        // STEP 1: add health bar variable and default it to enemy ID;
+        let healthBar = '#enemyHealthBar'
         switch(attack.name){
             case 'Tackle':
-                let movementDistanceX = 20;
-                let movementDistanceY = 10;
-                // STEP 1: add health bar variable and default it to enemy ID;
-                let healthBar = '#enemyHealthBar'
+                // let movementDistanceX = 20;
+                // let movementDistanceY = 10;
+                // // STEP 1: add health bar variable and default it to enemy ID;
+                // let healthBar = '#enemyHealthBar'
         
                 if (this.isEnemy) {
                     movementDistanceX = -movementDistanceX;
@@ -104,6 +108,13 @@ class Sprite {
             break;
 
             case 'YogaFlame':
+                if (this.isEnemy) {
+                    movementDistanceX = -movementDistanceX;
+                    movementDistanceY = -movementDistanceY;
+                    // Step 2 change ID to player id if this.isEnemy is true; (Class property);
+                    healthBar = '#playerHealthBar'
+                }
+                
                 const fireballImage = new Image();
                 fireballImage.src = './img/fireball.png';
                 const yogaFlame = new Sprite({
@@ -121,11 +132,32 @@ class Sprite {
                 })
                 renderedSprites.push(yogaFlame)
 
+                
+
                 gsap.to(yogaFlame.position, {
                     x: recipient.position.x,
                     y: recipient.position.y,
                     onComplete: () => {
+                        gsap.to(healthBar, {
+                            width: (this.health -= attack.damage) + '%' 
+                        });
+        
+                        gsap.to(recipient.position, {
+                            x: recipient.position.x + 10,
+                            yoyo: true,
+                            repeat: 5,
+                            duration: 0.08,
+                        })
+        
+                        gsap.to(recipient, {
+                            opacity:  0,
+                            repeat: 5,
+                            yoyo: true,
+                            duration: 0.08,
+        
+                        })
                         renderedSprites.pop()
+                        
                     }
                 })
             break;
