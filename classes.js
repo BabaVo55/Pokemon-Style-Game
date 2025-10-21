@@ -10,7 +10,7 @@ class Sprite {
         }
         this.sprites = sprites;
         this.animate = animate;
-        this.opacity = 1; // save / intialize the state desired
+        this.opacity = 1; // save / initialize the state desired
         this.health = 100
         this.isEnemy = isEnemy;
         
@@ -112,13 +112,22 @@ class Sprite {
                         y: this.position.y,
                     },
                     image: fireballImage,
-                    // frames: {
-                    //     max: 4,
-                    //     hold: 
-                    // }
+                    frames: {
+                        max: 4,
+                        hold: 10
+                    },
+                    animate: true
                         
                 })
                 renderedSprites.push(yogaFlame)
+
+                gsap.to(yogaFlame.position, {
+                    x: recipient.position.x,
+                    y: recipient.position.y,
+                    onComplete: () => {
+                        renderedSprites.pop()
+                    }
+                })
             break;
         }
     }
