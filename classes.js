@@ -56,7 +56,9 @@ class Sprite {
         let movementDistanceY = 10;
         // STEP 1: add health bar variable and default it to enemy ID;
         let healthBar = '#enemyHealthBar';
-        
+        const tl = gsap.timeline();
+
+
         switch(attack.name){
             case 'Tackle':
              
@@ -69,7 +71,6 @@ class Sprite {
                     healthBar = '#playerHealthBar'
                 }
         
-                const tl = gsap.timeline();
                 tl.to(this.position, {
                     x: this.position.x - movementDistanceX,
                     y: this.position.y + movementDistanceY
@@ -128,6 +129,16 @@ class Sprite {
                     },
                     animate: true
                         
+                })
+                tl.to(this.position, {
+                    x: this.position.x - movementDistanceX,
+                    y: this.position.y + movementDistanceY,
+                    duration: 0.1
+                }).to(this.position, {
+                    // changed to .02 to reduce the kick forward as character is moving forward
+                    x: this.position.x + movementDistanceX * .02,
+                    y: this.position.y - movementDistanceY * .02,
+                    duration: 0.1 
                 })
                 renderedSprites.push(yogaFlame)
 
