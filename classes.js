@@ -55,13 +55,12 @@ class Sprite {
         let movementDistanceX = 20;
         let movementDistanceY = 10;
         // STEP 1: add health bar variable and default it to enemy ID;
-        let healthBar = '#enemyHealthBar'
+        let healthBar = '#enemyHealthBar';
+        
         switch(attack.name){
             case 'Tackle':
-                // let movementDistanceX = 20;
-                // let movementDistanceY = 10;
-                // // STEP 1: add health bar variable and default it to enemy ID;
-                // let healthBar = '#enemyHealthBar'
+             
+
         
                 if (this.isEnemy) {
                     movementDistanceX = -movementDistanceX;
