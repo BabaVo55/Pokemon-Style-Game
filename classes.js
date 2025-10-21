@@ -1,5 +1,16 @@
 class Sprite {
-    constructor({position, image, frames = {max: 1, hold: 10}, sprites = [], animate = false, isEnemy = false}){
+    constructor({
+        position, 
+        image, 
+        frames = {
+            max: 1, 
+            hold: 10
+        }, 
+        sprites = [], 
+        animate = false, 
+        isEnemy = false,
+        rotation = 0
+    }){
         this.position = position,
         this.image = image,
         this.frames = {...frames, val: 0, elapsed: 0},
@@ -13,15 +24,21 @@ class Sprite {
         this.opacity = 1; // save / initialize the state desired
         this.health = 100,
         this.isEnemy = isEnemy,
-        this.rotation = 0
+        this.rotation = rotation
         
     }
   
     draw(){
         c.save()
-        c.translate(this.position.x + this.width / 2, this.position.y + this.height / 2)
+        c.translate(
+            this.position.x + this.width / 2, 
+            this.position.y + this.height / 2
+        )
         c.rotate(this.rotation)
-        c.translate(-this.position.x - this.width / 2, -this.position.y - this.height / 2)
+        c.translate(
+            -this.position.x - this.width / 2, 
+            -this.position.y - this.height / 2
+        )
         c.globalAlpha = this.opacity;
         c.drawImage(
             this.image,
@@ -60,56 +77,15 @@ class Sprite {
         let movementDistanceY = 10;
         // STEP 1: add health bar variable and default it to enemy ID;
         let healthBar = '#enemyHealthBar';
+        let rotation = 1;
+
+        if (this.isEnemy){
+            rotation = -3
+        }
         const tl = gsap.timeline();
 
 
         switch(attack.name){
-            case 'Tackle':
-             
-
-        
-                if (this.isEnemy) {
-                    movementDistanceX = -movementDistanceX;
-                    movementDistanceY = -movementDistanceY;
-                    // Step 2 change ID to player id if this.isEnemy is true; (Class property);
-                    healthBar = '#playerHealthBar'
-                }
-        
-                tl.to(this.position, {
-                    x: this.position.x - movementDistanceX,
-                    y: this.position.y + movementDistanceY
-                }).to(this.position, {
-                    x: this.position.x + movementDistanceX * 2,
-                    y: this.position.y - movementDistanceY * 2,
-                    duration: 0.1,
-                    onComplete: () => { // through this Hoisting is made possible as we need to reference this.health;
-                        // Attack Completed;
-                        
-                        // Step 3: add health bar variable rather than the enemy ID as it was done before:
-                        gsap.to(healthBar, {
-                            width: (this.health -= attack.damage) + '%' 
-                        });
-        
-                        gsap.to(recipient.position, {
-                            x: recipient.position.x + 10,
-                            yoyo: true,
-                            repeat: 5,
-                            duration: 0.08,
-                        })
-        
-                        gsap.to(recipient, {
-                            opacity:  0,
-                            repeat: 5,
-                            yoyo: true,
-                            duration: 0.08,
-        
-                        })
-                    }
-                }).to(this.position, {
-                    x: this.position.x,
-                    y: this.position.y
-                })
-            break;
 
             case 'YogaFlame':
                 if (this.isEnemy) {
@@ -132,8 +108,7 @@ class Sprite {
                         hold: 10
                     },
                     animate: true,
-                    rotation: 1
-                        
+                    rotation
                 })
 
                 // const initialPosition = { x: this.position.x, y: this.position.y };
@@ -189,6 +164,50 @@ class Sprite {
                         renderedSprites.splice(1,1)
                         
                     }
+                })
+            break;
+            case 'Tackle':
+             
+                if (this.isEnemy) {
+                    movementDistanceX = -movementDistanceX;
+                    movementDistanceY = -movementDistanceY;
+                    // Step 2 change ID to player id if this.isEnemy is true; (Class property);
+                    healthBar = '#playerHealthBar'
+                }
+        
+                tl.to(this.position, {
+                    x: this.position.x - movementDistanceX,
+                    y: this.position.y + movementDistanceY
+                }).to(this.position, {
+                    x: this.position.x + movementDistanceX * 2,
+                    y: this.position.y - movementDistanceY * 2,
+                    duration: 0.1,
+                    onComplete: () => { // through this Hoisting is made possible as we need to reference this.health;
+                        // Attack Completed;
+                        
+                        // Step 3: add health bar variable rather than the enemy ID as it was done before:
+                        gsap.to(healthBar, {
+                            width: (this.health -= attack.damage) + '%' 
+                        });
+        
+                        gsap.to(recipient.position, {
+                            x: recipient.position.x + 10,
+                            yoyo: true,
+                            repeat: 5,
+                            duration: 0.08,
+                        })
+        
+                        gsap.to(recipient, {
+                            opacity:  0,
+                            repeat: 5,
+                            yoyo: true,
+                            duration: 0.08,
+        
+                        })
+                    }
+                }).to(this.position, {
+                    x: this.position.x,
+                    y: this.position.y
                 })
             break;
         }
