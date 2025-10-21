@@ -130,6 +130,17 @@ class Sprite {
                     animate: true
                         
                 })
+                // const initialPosition = { x: this.position.x, y: this.position.y };
+
+                // tl.to(this.position, {
+                //     x: initialPosition.x - movementDistanceX,
+                //     y: initialPosition.y + movementDistanceY,
+                //     duration: 0.1
+                // }).to(this.position, {
+                //     x: initialPosition.x,
+                //     y: initialPosition.y,
+                //     duration: 0.1
+                // });
                 tl.to(this.position, {
                     x: this.position.x - movementDistanceX,
                     y: this.position.y + movementDistanceY,
@@ -140,6 +151,8 @@ class Sprite {
                     y: this.position.y - movementDistanceY * .02,
                     duration: 0.1 
                 })
+
+
                 renderedSprites.push(yogaFlame)
 
                 
