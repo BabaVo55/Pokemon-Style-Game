@@ -52,54 +52,57 @@ class Sprite {
     /// ************************ FOCUS RIGHT HERE> ENGINEERING IS HERE * (BELOW) *****************************************************
 
     attack({attack, recipient}){
-
-        let movementDistanceX = 20;
-        let movementDistanceY = 10;
-        // STEP 1: add health bar variable and default it to enemy ID;
-        let healthBar = '#enemyHealthBar'
-
-        if (this.isEnemy) {
-            movementDistanceX = -movementDistanceX;
-            movementDistanceY = -movementDistanceY;
-            // Step 2 change ID to player id if this.isEnemy is true; (Class property);
-            healthBar = '#playerHealthBar'
+        switch(attack.name){
+            case 'Tackle':
+                let movementDistanceX = 20;
+                let movementDistanceY = 10;
+                // STEP 1: add health bar variable and default it to enemy ID;
+                let healthBar = '#enemyHealthBar'
+        
+                if (this.isEnemy) {
+                    movementDistanceX = -movementDistanceX;
+                    movementDistanceY = -movementDistanceY;
+                    // Step 2 change ID to player id if this.isEnemy is true; (Class property);
+                    healthBar = '#playerHealthBar'
+                }
+        
+                const tl = gsap.timeline();
+                tl.to(this.position, {
+                    x: this.position.x - movementDistanceX,
+                    y: this.position.y + movementDistanceY
+                }).to(this.position, {
+                    x: this.position.x + movementDistanceX * 2,
+                    y: this.position.y - movementDistanceY * 2,
+                    duration: 0.1,
+                    onComplete: () => { // through this Hoisting is made possible as we need to reference this.health;
+                        // Attack Completed;
+                        
+                        // Step 3: add health bar variable rather than the enemy ID as it was done before:
+                        gsap.to(healthBar, {
+                            width: (this.health -= attack.damage) + '%' 
+                        });
+        
+                        gsap.to(recipient.position, {
+                            x: recipient.position.x + 10,
+                            yoyo: true,
+                            repeat: 5,
+                            duration: 0.08,
+                        })
+        
+                        gsap.to(recipient, {
+                            opacity:  0,
+                            repeat: 5,
+                            yoyo: true,
+                            duration: 0.08,
+        
+                        })
+                    }
+                }).to(this.position, {
+                    x: this.position.x,
+                    y: this.position.y
+                })
+            break;
         }
-
-        const tl = gsap.timeline();
-        tl.to(this.position, {
-            x: this.position.x - movementDistanceX,
-            y: this.position.y + movementDistanceY
-        }).to(this.position, {
-            x: this.position.x + movementDistanceX * 2,
-            y: this.position.y - movementDistanceY * 2,
-            duration: 0.1,
-            onComplete: () => { // through this Hoisting is made possible as we need to reference this.health;
-                // Attack Completed;
-                
-                // Step 3: add health bar variable rather than the enemy ID as it was done before:
-                gsap.to(healthBar, {
-                    width: (this.health -= attack.damage) + '%' 
-                });
-
-                gsap.to(recipient.position, {
-                    x: recipient.position.x + 10,
-                    yoyo: true,
-                    repeat: 5,
-                    duration: 0.08,
-                })
-
-                gsap.to(recipient, {
-                    opacity:  0,
-                    repeat: 5,
-                    yoyo: true,
-                    duration: 0.08,
-
-                })
-            }
-        }).to(this.position, {
-            x: this.position.x,
-            y: this.position.y
-        })
     }
 
     
