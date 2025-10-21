@@ -51,7 +51,7 @@ class Sprite {
     }   
     /// ************************ FOCUS RIGHT HERE> ENGINEERING IS HERE * (BELOW) *****************************************************
 
-    attack({attack, recipient}){
+    attack({attack, recipient, renderedSprites}){
         switch(attack.name){
             case 'Tackle':
                 let movementDistanceX = 20;
@@ -101,6 +101,24 @@ class Sprite {
                     x: this.position.x,
                     y: this.position.y
                 })
+            break;
+
+            case 'YogaFlame':
+                const fireballImage = new Image();
+                fireballImage.src = './img/fireball.png';
+                const yogaFlame = new Sprite({
+                    position: {
+                        x: this.position.x,
+                        y: this.position.y,
+                    },
+                    image: fireballImage,
+                    // frames: {
+                    //     max: 4,
+                    //     hold: 
+                    // }
+                        
+                })
+                renderedSprites.push(yogaFlame)
             break;
         }
     }
