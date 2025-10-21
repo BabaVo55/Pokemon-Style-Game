@@ -130,6 +130,7 @@ class Sprite {
                     animate: true
                         
                 })
+
                 // const initialPosition = { x: this.position.x, y: this.position.y };
 
                 // tl.to(this.position, {
@@ -141,6 +142,7 @@ class Sprite {
                 //     y: initialPosition.y,
                 //     duration: 0.1
                 // });
+
                 tl.to(this.position, {
                     x: this.position.x - movementDistanceX,
                     y: this.position.y + movementDistanceY,
@@ -152,8 +154,8 @@ class Sprite {
                     duration: 0.1 
                 })
 
-
-                renderedSprites.push(yogaFlame)
+                const  index = renderedSprites.length - 1
+                renderedSprites.splice(index, 0, yogaFlame)
 
                 
 
@@ -179,7 +181,7 @@ class Sprite {
                             duration: 0.08,
         
                         })
-                        renderedSprites.pop()
+                        renderedSprites.splice(1,1)
                         
                     }
                 })
