@@ -100,10 +100,12 @@ document.getElementById('dialogueBox').addEventListener('click', (e) => {
     console.log(e)
     // document.getElementById('dialogueBox').style.display = 'none';
     // OR
-    e.currentTarget.style.display = 'none';
+    
     if (queue.length > 0){
         queue[0]();
         queue.shift()
+    } else {
+        e.currentTarget.style.display = 'none';
     }
 
 })
