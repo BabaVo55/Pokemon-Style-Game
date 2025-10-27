@@ -67,6 +67,9 @@ function animateBattle(){
 animateBattle()
 
 
+const queue = [];
+
+
 // let draggleHealth = document.getElementById('enemyHealthBar');
 // let embyHealth = document.getElementById('playerHealthBar');
 
@@ -82,12 +85,26 @@ document.querySelectorAll('button').forEach(b => {
             recipient: draggle, 
             renderedSprites 
         })
+
+        queue.push(() => {
+            draggle.attack({ 
+                attack: attacks.Tackle,
+                recipient: emby, 
+                renderedSprites 
+            })
+        })
     })
 })
 
 document.getElementById('dialogueBox').addEventListener('click', (e) => {
     console.log(e)
-    document.getElementById('dialogueBox').style.display = 'none'
+    // document.getElementById('dialogueBox').style.display = 'none';
+    // OR
+    e.currentTarget.style.display = 'none';
+    if (queue.length > 0){
+        queue[0]();
+        queue.shift()
+    }
 
 })
 
