@@ -8,9 +8,7 @@ class Sprite {
         }, 
         sprites = [], 
         animate = false, 
-        isEnemy = false,
         rotation = 0,
-        name
     }){
         this.position = position,
         this.image = image,
@@ -23,10 +21,8 @@ class Sprite {
         this.sprites = sprites,
         this.animate = animate,
         this.opacity = 1; // save / initialize the state desired
-        this.health = 100,
-        this.isEnemy = isEnemy,
         this.rotation = rotation
-        this.name = name
+        
         
     }
   
@@ -72,8 +68,53 @@ class Sprite {
             }
         }
     }   
-    /// ************************ FOCUS RIGHT HERE> ENGINEERING IS HERE * (BELOW) *****************************************************
+   
 
+    
+
+    // update(){
+    //     if (this.frames.max > 1){
+    //         this.frames.elapsed ++
+    //     }
+    //     if (this.frames.elapsed % 10 === 0){
+
+    //         if (this.frames.val < this.frames.max - 1){
+    //             this.frames.val++
+    //         } else {
+    //             this.frames.val = 0
+    //         }
+    //     }
+    // }
+}
+
+class Monster extends Sprite {
+    constructor({
+        isEnemy = false,
+        name,
+        position, 
+        image, 
+        frames = {
+            max: 1, 
+            hold: 10
+        }, 
+        sprites = [], 
+        animate = false, 
+        rotation = 0,
+        
+    }) {
+        super({
+            position, 
+            image, 
+            frames, 
+            sprites, 
+            animate, 
+            rotation,
+        })
+        this.isEnemy = isEnemy,
+        this.name = name,
+        this.health = 100,
+    }
+    /// ************************ FOCUS RIGHT HERE> ENGINEERING IS HERE * (BELOW) *****************************************************
     attack({attack, recipient, renderedSprites}){
         let movementDistanceX = 20;
         let movementDistanceY = 10;
@@ -216,22 +257,6 @@ class Sprite {
             break;
         }
     }
-
-    
-
-    // update(){
-    //     if (this.frames.max > 1){
-    //         this.frames.elapsed ++
-    //     }
-    //     if (this.frames.elapsed % 10 === 0){
-
-    //         if (this.frames.val < this.frames.max - 1){
-    //             this.frames.val++
-    //         } else {
-    //             this.frames.val = 0
-    //         }
-    //     }
-    // }
 }
 
 

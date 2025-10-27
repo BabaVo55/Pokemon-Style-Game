@@ -12,9 +12,9 @@ const battleBackground = new Sprite({
 
 
 
-const emby = new Sprite(monsters.Emby)
+const emby = new Monster(monsters.Emby)
 
-const draggle = new Sprite(monsters.Draggle)
+const draggle = new Monster(monsters.Draggle)
 
 
 let bat = document.getElementById('battle')
