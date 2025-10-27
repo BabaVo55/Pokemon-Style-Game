@@ -85,6 +85,11 @@ document.querySelectorAll('button').forEach(b => {
     })
 })
 
+document.getElementById('dialogueBox').addEventListener('click', (e) => {
+    console.log(e)
+    document.getElementById('dialogueBox').style.display = 'none'
+
+})
 
 
 // document.getElementById('tackle').addEventListener('click', () => {
