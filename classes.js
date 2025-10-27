@@ -9,7 +9,8 @@ class Sprite {
         sprites = [], 
         animate = false, 
         isEnemy = false,
-        rotation = 0
+        rotation = 0,
+        name
     }){
         this.position = position,
         this.image = image,
@@ -25,6 +26,7 @@ class Sprite {
         this.health = 100,
         this.isEnemy = isEnemy,
         this.rotation = rotation
+        this.name = name
         
     }
   
@@ -75,6 +77,9 @@ class Sprite {
     attack({attack, recipient, renderedSprites}){
         let movementDistanceX = 20;
         let movementDistanceY = 10;
+        document.querySelector('#dialogueBox').style.display = 'block';
+        document.querySelector('#dialogueBox').innerHTML = `${this.name} used `
+
         // STEP 1: add health bar variable and default it to enemy ID;
         let healthBar = '#enemyHealthBar';
         let rotation = 1;
@@ -86,7 +91,6 @@ class Sprite {
 
 
         switch(attack.name){
-
             case 'YogaFlame':
                 if (this.isEnemy) {
                     movementDistanceX = -movementDistanceX;
