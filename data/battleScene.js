@@ -22,8 +22,8 @@ emby.attacks.forEach(attack => {
     const button = document.createElement('button')
     button.innerHTML = attack.name;
     document.querySelector('#attacksBox').append(
-    button
-)
+        button
+    )
 })
 // 1. Create button element 
 
@@ -37,7 +37,7 @@ function animateBattle(){
     battleBackground.draw();
     // no need anymore
     // draggle.draw();
-    // emby.draw();
+    // emby.draw(); 
     
     renderedSprites.forEach(sprite => {
         sprite.draw()
@@ -69,10 +69,12 @@ document.querySelectorAll('button').forEach(b => {
             recipient: draggle, 
             renderedSprites 
         })
+        
+        const randomAttack = draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)]
 
         queue.push(() => {
             draggle.attack({ 
-                attack: attacks.Tackle,
+                attack: randomAttack,
                 recipient: emby, 
                 renderedSprites 
             })

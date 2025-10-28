@@ -215,6 +215,8 @@ class Monster extends Sprite {
                     }
                 })
             break;
+
+            
             case 'Tackle':
              
                 if (this.isEnemy) {
