@@ -18,15 +18,19 @@ const draggle = new Monster(monsters.Draggle)
 let bat = document.getElementById('battle')
 
 const renderedSprites = [draggle, emby];
-
-// 1. Create button element 
-const button = document.createElement('button')
-// 2. Give it a name that corresponds with the logic
-button.innerHTML = "YogaFlame";
-
-document.querySelector('#attacksBox').append(
+emby.attacks.forEach(attack => {
+    const button = document.createElement('button')
+    button.innerHTML = attack.name;
+    document.querySelector('#attacksBox').append(
     button
 )
+})
+// 1. Create button element 
+
+// 2. Give it a name that corresponds with the logic
+
+
+
 
 function animateBattle(){
     window.requestAnimationFrame(animateBattle);

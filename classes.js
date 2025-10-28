@@ -91,8 +91,6 @@ class Sprite {
 
 class Monster extends Sprite {
     constructor({
-        isEnemy = false,
-        name,
         position, 
         image, 
         frames = {
@@ -102,7 +100,9 @@ class Monster extends Sprite {
         sprites = [], 
         animate = false, 
         rotation = 0,
-        
+        isEnemy = false,
+        name,
+        attacks
     }) {
         super({
             position, 
@@ -115,7 +115,8 @@ class Monster extends Sprite {
         
         this.isEnemy = isEnemy,
         this.health = 100,
-        this.name = name
+        this.name = name,
+        this.attacks = attacks
     }
     /// ************************ FOCUS RIGHT HERE> ENGINEERING IS HERE * (BELOW) *****************************************************
     attack({attack, recipient, renderedSprites}){
