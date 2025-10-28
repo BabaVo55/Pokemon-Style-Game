@@ -19,8 +19,9 @@ let bat = document.getElementById('battle')
 
 const renderedSprites = [draggle, emby];
 
-
+// 1. Create button element 
 const button = document.createElement('button')
+// 2. Give it a name that corresponds with the logic
 button.innerHTML = "YogaFlame";
 
 document.querySelector('#attacksBox').append(
@@ -56,6 +57,7 @@ document.querySelectorAll('button').forEach(b => {
     b.addEventListener('click', (e) => {
        
         // Using event listener, we selected the inner html to match the name of the attack within the attacks object;
+        // 3. The selected name must correspond right here so it can actually assign an attack that exists within the attacks.js file
         const selectedAttack = attacks[e.currentTarget.innerHTML]
 
         emby.attack({ 
