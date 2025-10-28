@@ -87,6 +87,8 @@ class Sprite {
     // }
 }
 
+
+
 class Monster extends Sprite {
     constructor({
         isEnemy = false,
@@ -110,9 +112,10 @@ class Monster extends Sprite {
             animate, 
             rotation,
         })
+        
         this.isEnemy = isEnemy,
-        this.name = name,
         this.health = 100,
+        this.name = name
     }
     /// ************************ FOCUS RIGHT HERE> ENGINEERING IS HERE * (BELOW) *****************************************************
     attack({attack, recipient, renderedSprites}){
@@ -261,6 +264,8 @@ class Monster extends Sprite {
 
 
 
+
+
 class Boundary {
     static width = 48;
     static height = 48;
@@ -275,4 +280,5 @@ class Boundary {
         c.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
 }
+
 

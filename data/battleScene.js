@@ -10,8 +10,6 @@ const battleBackground = new Sprite({
 
 })
 
-
-
 const emby = new Monster(monsters.Emby)
 
 const draggle = new Monster(monsters.Draggle)
@@ -23,7 +21,7 @@ const renderedSprites = [draggle, emby];
 
 
 const button = document.createElement('button')
-button.innerHTML = "Fireball";
+button.innerHTML = "YogaFlame";
 
 document.querySelector('#attacksBox').append(
     button
