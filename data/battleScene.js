@@ -70,7 +70,7 @@ document.querySelectorAll('button').forEach(b => {
             renderedSprites 
         })
         
-        const randomAttack = draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)]
+        let randomAttack = draggle.attacks[Math.floor(Math.random() * draggle.attacks.length) - 1]
 
         queue.push(() => {
             draggle.attack({ 
@@ -79,11 +79,12 @@ document.querySelectorAll('button').forEach(b => {
                 renderedSprites 
             })
         })
+        console.log(queue)
     })
 })
 
 document.getElementById('dialogueBox').addEventListener('click', (e) => {
-    console.log(e)
+    // console.log(e)
     // document.getElementById('dialogueBox').style.display = 'none';
     // OR
     

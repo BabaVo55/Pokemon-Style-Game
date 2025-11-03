@@ -72,19 +72,7 @@ class Sprite {
 
     
 
-    // update(){
-    //     if (this.frames.max > 1){
-    //         this.frames.elapsed ++
-    //     }
-    //     if (this.frames.elapsed % 10 === 0){
 
-    //         if (this.frames.val < this.frames.max - 1){
-    //             this.frames.val++
-    //         } else {
-    //             this.frames.val = 0
-    //         }
-    //     }
-    // }
 }
 
 
@@ -129,9 +117,10 @@ class Monster extends Sprite {
         let healthBar = '#enemyHealthBar';
         let rotation = 1;
 
-        if (this.isEnemy){
+        if (this.isEnemy) { 
             rotation = -3
         }
+
         const tl = gsap.timeline();
 
 
@@ -146,6 +135,7 @@ class Monster extends Sprite {
                 
                 const fireballImage = new Image();
                 fireballImage.src = './img/fireball.png';
+
                 const yogaFlame = new Sprite({
                     position: {
                         x: this.position.x,
@@ -160,17 +150,6 @@ class Monster extends Sprite {
                     rotation
                 })
 
-                // const initialPosition = { x: this.position.x, y: this.position.y };
-
-                // tl.to(this.position, {
-                //     x: initialPosition.x - movementDistanceX,
-                //     y: initialPosition.y + movementDistanceY,
-                //     duration: 0.1
-                // }).to(this.position, {
-                //     x: initialPosition.x,
-                //     y: initialPosition.y,
-                //     duration: 0.1
-                // });
 
                 tl.to(this.position, {
                     x: this.position.x - movementDistanceX,
