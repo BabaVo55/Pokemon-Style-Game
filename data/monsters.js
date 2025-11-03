@@ -16,7 +16,7 @@ const monsters = {
         }, 
         animate: true,
         name: 'Emby',
-        attacks : [attacks.Tackle, attacks.Death, attacks.YogaFlame]
+        attacks : [attacks.Tackle, attacks.YogaFlame]
         // attacks : [attacks.forEach(attack => attack)]
     },
     Draggle : {
@@ -32,6 +32,6 @@ const monsters = {
         animate : true,
         isEnemy : true,
         name: 'Draggle',
-        attacks: [attacks.Tackle, attacks.Death, attacks.yogaFlame]
+        attacks: [attacks.Tackle, attacks.yogaFlame]
     }
 }

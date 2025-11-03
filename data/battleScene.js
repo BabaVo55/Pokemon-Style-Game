@@ -35,16 +35,12 @@ emby.attacks.forEach(attack => {
 function animateBattle(){
     window.requestAnimationFrame(animateBattle);
     battleBackground.draw();
-    // no need anymore
-    // draggle.draw();
-    // emby.draw(); 
+
     
     renderedSprites.forEach(sprite => {
         sprite.draw()
     })
     
-    // bat.style.visibility.hidden;
-    // console.log('animating broski')
 }
 
 animateBattle()
@@ -53,8 +49,6 @@ animateBattle()
 const queue = [];
 
 
-// let draggleHealth = document.getElementById('enemyHealthBar');
-// let embyHealth = document.getElementById('playerHealthBar');
 
 // Here right here the heart of the cards resides:!!!!!!!!!!!!!:
 document.querySelectorAll('button').forEach(b => { 
@@ -70,7 +64,7 @@ document.querySelectorAll('button').forEach(b => {
             renderedSprites 
         })
         
-        let randomAttack = draggle.attacks[Math.floor(Math.random() * draggle.attacks.length) - 1]
+        let randomAttack = draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)]
 
         queue.push(() => {
             draggle.attack({ 
