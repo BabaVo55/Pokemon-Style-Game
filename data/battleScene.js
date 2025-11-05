@@ -25,6 +25,9 @@ emby.attacks.forEach(attack => {
         button
     )
 })
+
+
+
 // 1. Create button element 
 
 // 2. Give it a name that corresponds with the logic
@@ -75,6 +78,10 @@ document.querySelectorAll('button').forEach(b => {
         })
         console.log(queue)
     })
+
+    b.addEventListener('mouseenter', (e) => {
+        console.log(`${b} is pressed`)
+    })
 })
 
 document.getElementById('dialogueBox').addEventListener('click', (e) => {
@@ -90,6 +97,7 @@ document.getElementById('dialogueBox').addEventListener('click', (e) => {
     }
 
 })
+
 
 
 // document.getElementById('tackle').addEventListener('click', () => {
