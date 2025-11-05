@@ -80,7 +80,12 @@ document.querySelectorAll('button').forEach(b => {
     })
 
     b.addEventListener('mouseenter', (e) => {
-        console.log(`${b} is pressed`)
+        // console.log(`${b.innerHTML} is pressed`) 
+        document.querySelector('#attackType').innerHTML = `${attacks[e.currentTarget.innerHTML].type}`
+        document.querySelector('#attackType').style.color = `${attacks[e.currentTarget.innerHTML].color}`
+
+        // const selectedAttack = attacks[e.currentTarget.innerHTML];
+        // document.querySelector('#attackType').innerHTML = selectedAttack.type
     })
 })
 

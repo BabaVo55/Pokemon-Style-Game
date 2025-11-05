@@ -2,7 +2,8 @@ const attacks = {
     Tackle : {
                 name: 'Tackle',
                 damage: 10,
-                type: 'Normal'
+                type: 'Normal',
+                color: 'black'
             },
     // Death : {
     //             name: 'Death',
@@ -12,7 +13,8 @@ const attacks = {
     YogaFlame : {
                 name: 'YogaFlame',
                 damage: 25,
-                type: 'Fire'
+                type: 'Fire',
+                color: 'red'
             }
     
 }
