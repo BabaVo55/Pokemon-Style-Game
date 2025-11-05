@@ -63,12 +63,12 @@ document.querySelectorAll('button').forEach(b => {
             renderedSprites 
         })
         
-        let randomAttack = draggle.attacks[Math.floor(Math.random() * draggle.attacks.length) - 1]
+        let randomAttack = draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)]
         console.log(randomAttack)
 
         queue.push(() => {
             draggle.attack({ 
-                attack: draggle.attacks[0],
+                attack: randomAttack,
                 recipient: emby, 
                 renderedSprites 
             })

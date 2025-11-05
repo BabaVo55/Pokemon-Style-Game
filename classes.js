@@ -108,6 +108,15 @@ class Monster extends Sprite {
     }
     /// ************************ FOCUS RIGHT HERE> ENGINEERING IS HERE * (BELOW) *****************************************************
     attack({attack, recipient, renderedSprites}){
+    
+        if (!attack) {
+            console.error('ATTACK IS UNDEFINED!', { attack, recipient, renderedSprites });
+            return;
+        }
+        console.log('Attack is valid:', attack.name);
+
+
+
         let movementDistanceX = 20;
         let movementDistanceY = 10;
         document.querySelector('#dialogueBox').style.display = 'block';
@@ -133,9 +142,11 @@ class Monster extends Sprite {
                     healthBar = '#playerHealthBar'
                 }
                 
+
                 const fireballImage = new Image();
                 fireballImage.src = './img/fireball.png';
 
+                // fireballImage.onload = () => {
                 const yogaFlame = new Sprite({
                     position: {
                         x: this.position.x,
@@ -193,6 +204,7 @@ class Monster extends Sprite {
                         
                     }
                 })
+            // }
             break;
 
             
