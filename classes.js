@@ -21,9 +21,7 @@ class Sprite {
         this.sprites = sprites,
         this.animate = animate,
         this.opacity = 1; // save / initialize the state desired
-        this.rotation = rotation
-        
-        
+        this.rotation = rotation    
     }
   
     draw(){
@@ -68,11 +66,6 @@ class Sprite {
             }
         }
     }   
-   
-
-    
-
-
 }
 
 
@@ -106,17 +99,15 @@ class Monster extends Sprite {
         this.name = name,
         this.attacks = attacks
     }
+
+    faint(){
+            console.log('faint');
+    }
+
     /// ************************ FOCUS RIGHT HERE> ENGINEERING IS HERE * (BELOW) *****************************************************
+
     attack({attack, recipient, renderedSprites}){
     
-        if (!attack) {
-            console.error('ATTACK IS UNDEFINED!', { attack, recipient, renderedSprites });
-            return;
-        }
-        console.log('Attack is valid:', attack.name);
-
-
-
         let movementDistanceX = 20;
         let movementDistanceY = 10;
         document.querySelector('#dialogueBox').style.display = 'block';
@@ -183,7 +174,7 @@ class Monster extends Sprite {
                     y: recipient.position.y,
                     onComplete: () => {
                         gsap.to(healthBar, {
-                            width: (this.health -= attack.damage) + '%' 
+                            width: (recipient.health -= attack.damage) + '%' 
                         });
         
                         gsap.to(recipient.position, {
@@ -214,7 +205,7 @@ class Monster extends Sprite {
                     movementDistanceX = -movementDistanceX;
                     movementDistanceY = -movementDistanceY;
                     // Step 2 change ID to player id if this.isEnemy is true; (Class property);
-                    healthBar = '#playerHealthBar'
+                    healthBar = '#playerHealthBar';
                 }
         
                 tl.to(this.position, {
@@ -229,7 +220,7 @@ class Monster extends Sprite {
                         
                         // Step 3: add health bar variable rather than the enemy ID as it was done before:
                         gsap.to(healthBar, {
-                            width: (this.health -= attack.damage) + '%' 
+                            width: (recipient.health -= attack.damage) + '%' 
                         });
         
                         gsap.to(recipient.position, {
@@ -254,6 +245,8 @@ class Monster extends Sprite {
             break;
         }
     }
+
+
 }
 
 

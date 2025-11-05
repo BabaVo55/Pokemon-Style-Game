@@ -66,6 +66,16 @@ document.querySelectorAll('button').forEach(b => {
             renderedSprites 
         })
         
+        // Draggle / Enemy attacks
+
+        if (draggle.health <= 0){
+            queue.push(() => {
+                draggle.faint()
+            });
+
+            return;
+        }
+        
         let randomAttack = draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)]
         console.log(randomAttack)
 
