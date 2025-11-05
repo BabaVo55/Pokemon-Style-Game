@@ -115,11 +115,12 @@ class Monster extends Sprite {
 
         // STEP 1: add health bar variable and default it to enemy ID;
         let healthBar = '#enemyHealthBar';
+        if (this.isEnemy) healthBar = '#playerHealthBar'
+        
         let rotation = 1;
+        if (this.isEnemy) rotation = -3;
 
-        if (this.isEnemy) { 
-            rotation = -3
-        }
+        recipient.health -= attack.damage
 
         const tl = gsap.timeline();
 
@@ -130,7 +131,7 @@ class Monster extends Sprite {
                     movementDistanceX = -movementDistanceX;
                     movementDistanceY = -movementDistanceY;
                     // Step 2 change ID to player id if this.isEnemy is true; (Class property);
-                    healthBar = '#playerHealthBar'
+                    // healthBar = '#playerHealthBar'
                 }
                 
 
@@ -174,7 +175,7 @@ class Monster extends Sprite {
                     y: recipient.position.y,
                     onComplete: () => {
                         gsap.to(healthBar, {
-                            width: (recipient.health -= attack.damage) + '%' 
+                            width: (this.health -= attack.damage) + '%' 
                         });
         
                         gsap.to(recipient.position, {
@@ -205,7 +206,7 @@ class Monster extends Sprite {
                     movementDistanceX = -movementDistanceX;
                     movementDistanceY = -movementDistanceY;
                     // Step 2 change ID to player id if this.isEnemy is true; (Class property);
-                    healthBar = '#playerHealthBar';
+                    // healthBar = '#playerHealthBar';
                 }
         
                 tl.to(this.position, {
@@ -220,7 +221,7 @@ class Monster extends Sprite {
                         
                         // Step 3: add health bar variable rather than the enemy ID as it was done before:
                         gsap.to(healthBar, {
-                            width: (recipient.health -= attack.damage) + '%' 
+                            width: (this.health -= attack.damage) + '%' 
                         });
         
                         gsap.to(recipient.position, {
