@@ -3,6 +3,8 @@ embyImage.src = './img/embySprite.png';
 
 const draggleImage = new Image();
 draggleImage.src = './img/draggleSprite.png';
+
+
 const monsters = {
     Emby: {
         position: {

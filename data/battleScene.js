@@ -18,6 +18,7 @@ const draggle = new Monster(monsters.Draggle)
 let bat = document.getElementById('battle')
 
 const renderedSprites = [draggle, emby];
+
 emby.attacks.forEach(attack => {
     const button = document.createElement('button')
     button.innerHTML = attack.name;
@@ -27,12 +28,9 @@ emby.attacks.forEach(attack => {
 })
 
 
-
 // 1. Create button element 
 
 // 2. Give it a name that corresponds with the logic
-
-
 
 
 function animateBattle(){
@@ -75,7 +73,7 @@ document.querySelectorAll('button').forEach(b => {
 
             return;
         }
-        
+
         let randomAttack = draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)]
         console.log(randomAttack)
 
