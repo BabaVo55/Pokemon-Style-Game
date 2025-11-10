@@ -2,10 +2,12 @@ const battleBackgroundImage = new Image();
 battleBackgroundImage.src = './img/battleBackground.png';
 
 const battleBackground = new Sprite({
+    
     position : {
         x: 0,
         y: 0
     },
+
     image: battleBackgroundImage
 
 })
@@ -46,9 +48,9 @@ function animateBattle(){
 
 animateBattle()
 
+
+
 const queue = [];
-
-
 
 // Here right here the heart of the cards resides:!!!!!!!!!!!!!:
 document.querySelectorAll('button').forEach(b => { 
@@ -84,7 +86,9 @@ document.querySelectorAll('button').forEach(b => {
                 renderedSprites 
             })
         })
+
         console.log(queue)
+
     })
 
     b.addEventListener('mouseenter', (e) => {

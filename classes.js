@@ -91,7 +91,7 @@ class Monster extends Sprite {
             frames, 
             sprites, 
             animate, 
-            rotation,
+            rotation
         })
         
         this.isEnemy = isEnemy,
@@ -101,7 +101,14 @@ class Monster extends Sprite {
     }
 
     faint(){
-            console.log('faint');
+            document.querySelector('#dialogueBox').style.display = 'block';
+            document.querySelector('#dialogueBox').innerHTML = `${this.name} fainted!`;
+            gsap.to(this.position, {
+                y: this.position.y + 20
+            })
+            gsap.to(this, {
+                opacity: 0
+            })
     }
 
     /// ************************ FOCUS RIGHT HERE> ENGINEERING IS HERE * (BELOW) *****************************************************
@@ -111,7 +118,7 @@ class Monster extends Sprite {
         let movementDistanceX = 20;
         let movementDistanceY = 10;
         document.querySelector('#dialogueBox').style.display = 'block';
-        document.querySelector('#dialogueBox').innerHTML = `${this.name} used ${attack.name}`
+        document.querySelector('#dialogueBox').innerHTML = `${this.name} used ${attack.name}`;
 
         // STEP 1: add health bar variable and default it to enemy ID;
         let healthBar = '#enemyHealthBar';
@@ -175,7 +182,7 @@ class Monster extends Sprite {
                     y: recipient.position.y,
                     onComplete: () => {
                         gsap.to(healthBar, {
-                            width: (this.health -= attack.damage) + '%' 
+                            width: (recipient.health -= attack.damage) + '%' 
                         });
         
                         gsap.to(recipient.position, {
@@ -221,7 +228,7 @@ class Monster extends Sprite {
                         
                         // Step 3: add health bar variable rather than the enemy ID as it was done before:
                         gsap.to(healthBar, {
-                            width: (this.health -= attack.damage) + '%' 
+                            width: (recipient.health -= attack.damage) + '%' 
                         });
         
                         gsap.to(recipient.position, {
