@@ -92,12 +92,11 @@ document.querySelectorAll('button').forEach(b => {
     })
 
     b.addEventListener('mouseenter', (e) => {
-        // console.log(`${b.innerHTML} is pressed`) 
+
         document.querySelector('#attackType').innerHTML = `${attacks[e.currentTarget.innerHTML].type}`
         document.querySelector('#attackType').style.color = `${attacks[e.currentTarget.innerHTML].color}`
 
-        // const selectedAttack = attacks[e.currentTarget.innerHTML];
-        // document.querySelector('#attackType').innerHTML = selectedAttack.type
+
     })
 })
 
@@ -114,27 +113,3 @@ document.getElementById('dialogueBox').addEventListener('click', (e) => {
     }
 
 })
-
-
-
-// document.getElementById('tackle').addEventListener('click', () => {
-//         emby.attack({ attack: {
-//                 name: 'Tackle',
-//                 damage: 10,
-//                 type: 'Normal'
-//             },
-//             recipient: draggle 
-//         })
-// })
-
-
-
-// document.getElementById('tackle').addEventListener('click', () => console.log('click'))
-
-// const tackle = document.getElementById('tackle')
-
-// tackle.addEventListener('click', () => console.log('click'))
-
-// document.querySelectorAll('button').forEach((button) => {
-//     button.addEventListener('click', () => console.log('clicked'))
-// })
