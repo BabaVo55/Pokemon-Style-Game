@@ -126,8 +126,9 @@ class Monster extends Sprite {
         
         let rotation = 1;
         if (this.isEnemy) rotation = -3;
-
-        recipient.health -= attack.damage
+        
+        // This here was the sneaky bug !!!! causing double health to be deducted ;(
+        // recipient.health -= attack.damage
 
         const tl = gsap.timeline();
 
