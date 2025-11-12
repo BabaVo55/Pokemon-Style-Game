@@ -36,13 +36,16 @@ emby.attacks.forEach(attack => {
 
 
 function animateBattle(){
-    window.requestAnimationFrame(animateBattle);
+    let startBattle = window.requestAnimationFrame(animateBattle);
     battleBackground.draw();
 
     
     renderedSprites.forEach(sprite => {
         sprite.draw()
+
+        // if (sprite.health <= 0) cancelAnimationFrame(startBattle)
     })
+
     
 }
 
@@ -50,7 +53,7 @@ animateBattle()
 
 
 
-// const queue = [];
+const queue = [];
 
 // if ()
 
@@ -68,18 +71,21 @@ document.querySelectorAll('button').forEach(b => {
             renderedSprites 
         })
        
-        // if (draggle.health <= 0){
-        //     queue.push(() => {
-        //         draggle.faint()
-        //     });
+        if (draggle.health <= 0){
+            queue.push(() => {
+                draggle.faint()
+                return;
+            });
 
-        //     return;
-        // }
+        }
+
+        console.log(queue.length)
+        console.log(renderedSprites.health)
             
         // Draggle / Enemy attacks
 
         let randomAttack = draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)]
-        console.log(randomAttack)
+        // console.log(randomAttack)
 
         queue.push(() => {
             draggle.attack({ 
@@ -89,19 +95,19 @@ document.querySelectorAll('button').forEach(b => {
             })
 
            
-            // if (emby.health <= 0){
-            //     queue.push(() => {
-            //         emby.faint()
-            //     });
+            if (emby.health <= 0){
+                queue.push(() => {
+                    emby.faint()
+                    return;
+                });
 
-            //     return;
-            // }
+            }
             
         })
 
 
 
-        // console.log(queue)
+        console.log(queue.length)
 
     })
 
