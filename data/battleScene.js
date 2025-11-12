@@ -72,15 +72,17 @@ document.querySelectorAll('button').forEach(b => {
         })
        
         if (draggle.health <= 0){
-            queue.push(() => {
+            queue.push(
                 draggle.faint()
-                return;
-            });
-
+              
+            );
+              return;
         }
 
         console.log(queue.length)
-        console.log(renderedSprites.health)
+        // renderedSprites.map(sprite => {
+        //     console.log(sprite.health)
+        // })
             
         // Draggle / Enemy attacks
 
@@ -96,10 +98,11 @@ document.querySelectorAll('button').forEach(b => {
 
            
             if (emby.health <= 0){
-                queue.push(() => {
+                queue.push(
                     emby.faint()
-                    return;
-                });
+                    
+                );
+                return;
 
             }
             
