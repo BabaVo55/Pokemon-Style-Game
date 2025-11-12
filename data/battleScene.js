@@ -52,6 +52,8 @@ animateBattle()
 
 const queue = [];
 
+// if ()
+
 // Here right here the heart of the cards resides:!!!!!!!!!!!!!:
 document.querySelectorAll('button').forEach(b => { 
     b.addEventListener('click', (e) => {
@@ -65,9 +67,7 @@ document.querySelectorAll('button').forEach(b => {
             recipient: draggle, 
             renderedSprites 
         })
-        
-        // Draggle / Enemy attacks
-
+       
         if (draggle.health <= 0){
             queue.push(() => {
                 draggle.faint()
@@ -75,6 +75,8 @@ document.querySelectorAll('button').forEach(b => {
 
             return;
         }
+            
+        // Draggle / Enemy attacks
 
         let randomAttack = draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)]
         console.log(randomAttack)
@@ -85,7 +87,19 @@ document.querySelectorAll('button').forEach(b => {
                 recipient: emby, 
                 renderedSprites 
             })
+
+           
+            if (emby.health <= 0){
+                queue.push(() => {
+                    emby.faint()
+                });
+
+                return;
+            }
+            
         })
+
+
 
         console.log(queue)
 
@@ -99,6 +113,8 @@ document.querySelectorAll('button').forEach(b => {
 
     })
 })
+
+
 
 document.getElementById('dialogueBox').addEventListener('click', (e) => {
     // console.log(e)
