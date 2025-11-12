@@ -70,13 +70,13 @@ document.querySelectorAll('button').forEach(b => {
             recipient: draggle, 
             renderedSprites 
         })
-       
+        
         if (draggle.health <= 0){
-            queue.push(
+            queue.push(() => {
                 draggle.faint()
-              
-            );
-              return;
+                return;
+            });
+
         }
 
         console.log(queue.length)
@@ -89,6 +89,7 @@ document.querySelectorAll('button').forEach(b => {
         let randomAttack = draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)]
         // console.log(randomAttack)
 
+        
         queue.push(() => {
             draggle.attack({ 
                 attack: randomAttack,
@@ -98,19 +99,21 @@ document.querySelectorAll('button').forEach(b => {
 
            
             if (emby.health <= 0){
-                queue.push(
+                queue.push(() => {
                     emby.faint()
-                    
-                );
-                return;
+                    return;
+                });
 
             }
             
         })
 
-
-
         console.log(queue.length)
+        queue.map(funcs => {
+            // funcs.map(f => {
+                console.log(funcs)
+            // })
+        })
 
     })
 
