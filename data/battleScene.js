@@ -50,7 +50,7 @@ animateBattle()
 
 
 
-const queue = [];
+// const queue = [];
 
 // if ()
 
@@ -68,13 +68,13 @@ document.querySelectorAll('button').forEach(b => {
             renderedSprites 
         })
        
-        if (draggle.health <= 0){
-            queue.push(() => {
-                draggle.faint()
-            });
+        // if (draggle.health <= 0){
+        //     queue.push(() => {
+        //         draggle.faint()
+        //     });
 
-            return;
-        }
+        //     return;
+        // }
             
         // Draggle / Enemy attacks
 
@@ -89,19 +89,19 @@ document.querySelectorAll('button').forEach(b => {
             })
 
            
-            if (emby.health <= 0){
-                queue.push(() => {
-                    emby.faint()
-                });
+            // if (emby.health <= 0){
+            //     queue.push(() => {
+            //         emby.faint()
+            //     });
 
-                return;
-            }
+            //     return;
+            // }
             
         })
 
 
 
-        console.log(queue)
+        // console.log(queue)
 
     })
 

@@ -69,6 +69,7 @@ class Sprite {
 }
 
 
+const queue = [];
 
 class Monster extends Sprite {
     constructor({
@@ -112,7 +113,6 @@ class Monster extends Sprite {
     }
 
     /// ************************ FOCUS RIGHT HERE> ENGINEERING IS HERE * (BELOW) *****************************************************
-
     attack({attack, recipient, renderedSprites}){
     
         let movementDistanceX = 20;
@@ -198,13 +198,17 @@ class Monster extends Sprite {
                             repeat: 5,
                             yoyo: true,
                             duration: 0.08,
-        
+                            onComplete: () => {
+                                if (recipient.health <= 0){
+                                    queue.push(() => {
+                                        recipient.faint();
+                                    })
+                                }
+                            }
                         })
-                        renderedSprites.splice(1,1)
-                        
+                        renderedSprites.splice(1,1)    
                     }
                 })
-            // }
             break;
 
             
@@ -244,7 +248,13 @@ class Monster extends Sprite {
                             repeat: 5,
                             yoyo: true,
                             duration: 0.08,
-        
+                            onComplete: () => {
+                                if (recipient.health <= 0){
+                                    queue.push(() => {
+                                        recipient.faint();
+                                    })
+                                }
+                            }
                         })
                     }
                 }).to(this.position, {
