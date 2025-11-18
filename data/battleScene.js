@@ -66,26 +66,33 @@ document.querySelectorAll('button').forEach(b => {
         const selectedAttack = attacks[e.currentTarget.innerHTML]
         console.log('before emby attack:' + queue.length)
 
+
+
         emby.attack({ 
             attack: selectedAttack,
             recipient: draggle, 
             renderedSprites 
         })
         
+        
         if (draggle.health <= 0){
             queue.push(() => {
                 draggle.faint()
+                // document.querySelector('dialogueBox').style.display = 'none';
+
                 return;
             });
+                        queue.push(() => {
+                gsap.to('#overlappingDiv', {
+                    opacity: 1
+                })
+            })
 
         }
 
         console.log('after emby attack:' + queue.length)
         
-        // renderedSprites.map(sprite => {
-        //     console.log(sprite.health)
-        // })
-            
+
         // Draggle / Enemy attacks
 
         let randomAttack = draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)]
@@ -99,21 +106,18 @@ document.querySelectorAll('button').forEach(b => {
                 recipient: emby, 
                 renderedSprites 
             })
-
-           
-            if (emby.health <= 0){
-                queue.push(() => {
-                    emby.faint()
-                    return;
-                });
-
-            }
             
         })
 
-        console.log('after draggle attack:' + queue.length)
+        if (emby.health <= 0){
+            queue.push(() => {
+                emby.faint()
+                return;
+            });
 
-        // queue.forEach(name => console.log(name))
+        }
+
+
 
     })
 
