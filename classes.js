@@ -20,8 +20,8 @@ class Sprite {
         }
         this.sprites = sprites,
         this.animate = animate,
-        this.opacity = 1; // save / initialize the state desired
         this.rotation = rotation    
+        this.opacity = 1; // save / initialize the state desired
     }
   
     draw(){

@@ -105,7 +105,6 @@ document.querySelectorAll('button').forEach(b => {
                 });
 
             }
-            
         })
 
         console.log(queue.length)
