@@ -64,6 +64,7 @@ document.querySelectorAll('button').forEach(b => {
         // Using event listener, we selected the inner html to match the name of the attack within the attacks object;
         // 3. The selected name must correspond right here so it can actually assign an attack that exists within the attacks.js file
         const selectedAttack = attacks[e.currentTarget.innerHTML]
+        console.log('before emby attack:' + queue.length)
 
         emby.attack({ 
             attack: selectedAttack,
@@ -79,7 +80,8 @@ document.querySelectorAll('button').forEach(b => {
 
         }
 
-        console.log(queue.length)
+        console.log('after emby attack:' + queue.length)
+        
         // renderedSprites.map(sprite => {
         //     console.log(sprite.health)
         // })
@@ -89,6 +91,7 @@ document.querySelectorAll('button').forEach(b => {
         let randomAttack = draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)]
         // console.log(randomAttack)
 
+        console.log('before draggle attack:' + queue.length)
         
         queue.push(() => {
             draggle.attack({ 
@@ -105,14 +108,12 @@ document.querySelectorAll('button').forEach(b => {
                 });
 
             }
+            
         })
 
-        console.log(queue.length)
-        queue.map(funcs => {
-            // funcs.map(f => {
-                console.log(funcs)
-            // })
-        })
+        console.log('after draggle attack:' + queue.length)
+
+        // queue.forEach(name => console.log(name))
 
     })
 
