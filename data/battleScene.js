@@ -82,7 +82,7 @@ document.querySelectorAll('button').forEach(b => {
 
                 return;
             });
-                        queue.push(() => {
+                queue.push(() => {
                 gsap.to('#overlappingDiv', {
                     opacity: 1
                 })
