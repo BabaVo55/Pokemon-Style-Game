@@ -49,7 +49,7 @@ function animateBattle(){
     
 }
 
-animateBattle()
+// animateBattle()
 
 
 
@@ -111,14 +111,10 @@ document.querySelectorAll('button').forEach(b => {
 
         if (emby.health <= 0){
             queue.push(() => {
-                emby.faint()
+                emby.faint();
                 return;
             });
-
         }
-
-
-
     })
 
     b.addEventListener('mouseenter', (e) => {
