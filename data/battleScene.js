@@ -34,16 +34,14 @@ emby.attacks.forEach(attack => {
 
 // 2. Give it a name that corresponds with the logic
 
-
+let battleAnimationId;
 function animateBattle(){
-    let startBattle = window.requestAnimationFrame(animateBattle);
+    let battleAnimationId = window.requestAnimationFrame(animateBattle);
     battleBackground.draw();
-
+    
     
     renderedSprites.forEach(sprite => {
         sprite.draw()
-
-        // if (sprite.health <= 0) cancelAnimationFrame(startBattle)
     })
 
     
@@ -84,10 +82,25 @@ document.querySelectorAll('button').forEach(b => {
             });
                 queue.push(() => {
                 gsap.to('#overlappingDiv', {
-                    opacity: 1
+                    opacity: 1,
+                    repeat: 3,
+                    yoyo: true,
+                    duration: 0.4,
+                    onComplete() {
+                        gsap.to('#overlappingDiv', {
+                            opacity: 1,
+                            duration: 0.4, 
+                            onComplete(){
+                                cancelAnimationFrame(battleAnimationId)
+                                animate()
+                                gsap.to('#overlappingDiv', {
+                                    opacity: 0
+                                })
+                            }
+                        })
+                    }
                 })
             })
-
         }
 
         console.log('after emby attack:' + queue.length)
