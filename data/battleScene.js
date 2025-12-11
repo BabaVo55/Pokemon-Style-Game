@@ -38,7 +38,7 @@ let battleAnimationId;
 function animateBattle(){
     let battleAnimationId = window.requestAnimationFrame(animateBattle);
     battleBackground.draw();
-    
+    console.log(battleAnimationId)
     
     renderedSprites.forEach(sprite => {
         sprite.draw()
@@ -93,6 +93,7 @@ document.querySelectorAll('button').forEach(b => {
                             onComplete(){
                                 cancelAnimationFrame(battleAnimationId)
                                 animate()
+                                document.querySelector('#userInterface').style.display = 'none';
                                 gsap.to('#overlappingDiv', {
                                     opacity: 0
                                 })
