@@ -229,18 +229,18 @@ class Monster extends Sprite {
                             })
                         
                         }
-                                if (draggle.health > 0){
-        let randomAttack = draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)]
+                        if (draggle.health > 0){
+                            let randomAttack = draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)]
 
-            queue.push(() => {
-                draggle.attack({ 
-                    attack: randomAttack,
-                    recipient: emby, 
-                    renderedSprites 
-                })
-                
-            })
-        }
+                            queue.push(() => {
+                                draggle.attack({ 
+                                    attack: randomAttack,
+                                    recipient: emby, 
+                                    renderedSprites 
+                                })
+
+                            })
+                        }
                     }
                 })
             // }
