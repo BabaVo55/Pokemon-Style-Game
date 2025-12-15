@@ -201,33 +201,42 @@ class Monster extends Sprite {
         
                         })
                         renderedSprites.splice(1,1) 
-                                if (draggle.health <= 0){
-            queue.push(() => {
-                draggle.faint()
-                // document.querySelector('dialogueBox').style.display = 'none';
-
-                return;
-            });
-                queue.push(() => {
-                gsap.to('#overlappingDiv', {
-                    opacity: 1,
-                    onComplete() {
-                        gsap.to('#overlappingDiv', {
-                            opacity: 1,
-                            duration: 0.4, 
-                            onComplete(){
-                                document.querySelector('#userInterface').style.display = 'none';
-                                cancelAnimationFrame(battleAnimationId)
-                                animate()
+                        if (draggle.health <= 0){
+                            queue.push(() => {
+                                draggle.faint()
+                                // document.querySelector('dialogueBox').style.display = 'none';
+                            
+                                return;
+                            });
+                                queue.push(() => {
                                 gsap.to('#overlappingDiv', {
-                                    opacity: 0
+                                    opacity: 1,
+                                    onComplete() {
+                                        gsap.to('#overlappingDiv', {
+                                            opacity: 1,
+                                            duration: 0.4, 
+                                            onComplete(){
+                                                document.querySelector('#userInterface').style.display = 'none';
+                                                cancelAnimationFrame(battleAnimationId)
+                                                animate()
+                                                gsap.to('#overlappingDiv', {
+                                                    opacity: 0
+                                                })
+                                            }
+                                        })
+                                    }
                                 })
-                            }
-                        })
-                    }
-                })
-            })
-        }   
+                            })
+                        
+                        }
+                        queue.push(() => {
+                            draggle.attack({ 
+                                attack: randomAttack,
+                                recipient: emby, 
+                                renderedSprites 
+                            })
+            
+                        }) 
                     }
                 })
             // }

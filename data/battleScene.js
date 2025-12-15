@@ -39,7 +39,7 @@ let battleAnimationId;
 
 function animateBattle(){
     userInterface.style.display = 'block'
-    let battleAnimationId = window.requestAnimationFrame(animateBattle);
+    battleAnimationId = window.requestAnimationFrame(animateBattle);
     battleBackground.draw();
     console.log(battleAnimationId)
     
@@ -108,9 +108,6 @@ document.querySelectorAll('button').forEach(b => {
         // Draggle / Enemy attacks
 
         let randomAttack = draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)]
-        // console.log(randomAttack)
-
-        console.log('before draggle attack:' + queue.length)
         
         queue.push(() => {
             draggle.attack({ 
@@ -121,12 +118,12 @@ document.querySelectorAll('button').forEach(b => {
             
         })
 
-        if (emby.health <= 0){
-            queue.push(() => {
-                emby.faint();
-                return;
-            });
-        }
+        // if (emby.health <= 0){
+        //     queue.push(() => {
+        //         emby.faint();
+        //         return;
+        //     });
+        // }
     })
 
     b.addEventListener('mouseenter', (e) => {
