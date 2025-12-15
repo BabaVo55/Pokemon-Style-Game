@@ -107,16 +107,18 @@ document.querySelectorAll('button').forEach(b => {
 
         // Draggle / Enemy attacks
 
-        let randomAttack = draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)]
-        
-        queue.push(() => {
-            draggle.attack({ 
-                attack: randomAttack,
-                recipient: emby, 
-                renderedSprites 
-            })
-            
-        })
+        // if (draggle.health > 0){
+        // let randomAttack = draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)]
+
+        //     queue.push(() => {
+        //         draggle.attack({ 
+        //             attack: randomAttack,
+        //             recipient: emby, 
+        //             renderedSprites 
+        //         })
+                
+        //     })
+        // }
 
         // if (emby.health <= 0){
         //     queue.push(() => {
