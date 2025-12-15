@@ -73,6 +73,7 @@ document.querySelectorAll('button').forEach(b => {
             renderedSprites 
         })
         
+        // MOVED ALL THE CODE BENEATH TO CLASSES.js - Here code is sync and the code in classes.js is async due to gsap.
         
         // if (draggle.health <= 0){
         //     queue.push(() => {
@@ -106,6 +107,8 @@ document.querySelectorAll('button').forEach(b => {
         
 
         // Draggle / Enemy attacks
+
+        // MOVED ALL THE CODE BENEATH TO CLASSES.js - Here code is sync and the code in classes.js is async due to gsap.
 
         // if (draggle.health > 0){
         // let randomAttack = draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)]
