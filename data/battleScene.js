@@ -83,17 +83,15 @@ document.querySelectorAll('button').forEach(b => {
                 queue.push(() => {
                 gsap.to('#overlappingDiv', {
                     opacity: 1,
-                    repeat: 3,
-                    yoyo: true,
-                    duration: 0.4,
+                    
                     onComplete() {
                         gsap.to('#overlappingDiv', {
                             opacity: 1,
                             duration: 0.4, 
                             onComplete(){
                                 cancelAnimationFrame(battleAnimationId)
-                                animate()
                                 document.querySelector('#userInterface').style.display = 'none';
+                                animate()
                                 gsap.to('#overlappingDiv', {
                                     opacity: 0
                                 })
