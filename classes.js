@@ -200,7 +200,34 @@ class Monster extends Sprite {
                             duration: 0.08,
         
                         })
-                        renderedSprites.splice(1,1)    
+                        renderedSprites.splice(1,1) 
+                                if (draggle.health <= 0){
+            queue.push(() => {
+                draggle.faint()
+                // document.querySelector('dialogueBox').style.display = 'none';
+
+                return;
+            });
+                queue.push(() => {
+                gsap.to('#overlappingDiv', {
+                    opacity: 1,
+                    onComplete() {
+                        gsap.to('#overlappingDiv', {
+                            opacity: 1,
+                            duration: 0.4, 
+                            onComplete(){
+                                document.querySelector('#userInterface').style.display = 'none';
+                                cancelAnimationFrame(battleAnimationId)
+                                animate()
+                                gsap.to('#overlappingDiv', {
+                                    opacity: 0
+                                })
+                            }
+                        })
+                    }
+                })
+            })
+        }   
                     }
                 })
             // }

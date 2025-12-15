@@ -17,7 +17,8 @@ const emby = new Monster(monsters.Emby)
 const draggle = new Monster(monsters.Draggle)
 
 
-let bat = document.getElementById('battle')
+let userInterface = document.getElementById('userInterface')
+
 
 const renderedSprites = [draggle, emby];
 
@@ -35,7 +36,9 @@ emby.attacks.forEach(attack => {
 // 2. Give it a name that corresponds with the logic
 
 let battleAnimationId;
+
 function animateBattle(){
+    userInterface.style.display = 'block'
     let battleAnimationId = window.requestAnimationFrame(animateBattle);
     battleBackground.draw();
     console.log(battleAnimationId)
@@ -64,8 +67,6 @@ document.querySelectorAll('button').forEach(b => {
         const selectedAttack = attacks[e.currentTarget.innerHTML]
         console.log('before emby attack:' + queue.length)
 
-
-
         emby.attack({ 
             attack: selectedAttack,
             recipient: draggle, 
@@ -73,34 +74,33 @@ document.querySelectorAll('button').forEach(b => {
         })
         
         
-        if (draggle.health <= 0){
-            queue.push(() => {
-                draggle.faint()
-                // document.querySelector('dialogueBox').style.display = 'none';
+        // if (draggle.health <= 0){
+        //     queue.push(() => {
+        //         draggle.faint()
+        //         // document.querySelector('dialogueBox').style.display = 'none';
 
-                return;
-            });
-                queue.push(() => {
-                gsap.to('#overlappingDiv', {
-                    opacity: 1,
-                    
-                    onComplete() {
-                        gsap.to('#overlappingDiv', {
-                            opacity: 1,
-                            duration: 0.4, 
-                            onComplete(){
-                                cancelAnimationFrame(battleAnimationId)
-                                document.querySelector('#userInterface').style.display = 'none';
-                                animate()
-                                gsap.to('#overlappingDiv', {
-                                    opacity: 0
-                                })
-                            }
-                        })
-                    }
-                })
-            })
-        }
+        //         return;
+        //     });
+        //         queue.push(() => {
+        //         gsap.to('#overlappingDiv', {
+        //             opacity: 1,
+        //             onComplete() {
+        //                 gsap.to('#overlappingDiv', {
+        //                     opacity: 1,
+        //                     duration: 0.4, 
+        //                     onComplete(){
+        //                         document.querySelector('#userInterface').style.display = 'none';
+        //                         cancelAnimationFrame(battleAnimationId)
+        //                         animate()
+        //                         gsap.to('#overlappingDiv', {
+        //                             opacity: 0
+        //                         })
+        //                     }
+        //                 })
+        //             }
+        //         })
+        //     })
+        // }
 
         console.log('after emby attack:' + queue.length)
         
