@@ -74,7 +74,6 @@ document.querySelectorAll('button').forEach(b => {
         })
         
         // MOVED ALL THE CODE BENEATH TO CLASSES.js - Here code is sync and the code in classes.js is async due to gsap.
-        
         // if (draggle.health <= 0){
         //     queue.push(() => {
         //         draggle.faint()
@@ -102,7 +101,7 @@ document.querySelectorAll('button').forEach(b => {
         //         })
         //     })
         // }
-
+        
         console.log('after emby attack:' + queue.length)
         
 
